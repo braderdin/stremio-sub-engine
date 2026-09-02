@@ -9,4 +9,4 @@ rich>=15.0.0
 # Penambahan Baharu untuk Upstash & B2
 upstash-redis>=1.2.0
 upstash-search>=0.1.0
-b2sdk>=2.5.0
+b2sdk>=2.12.0
