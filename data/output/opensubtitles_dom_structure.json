@@ -1,0 +1,31 @@
+{
+  "status_code": 401,
+  "is_bot_challenge": true,
+  "page_title": "Making sure you're not a bot!",
+  "response_headers": {
+    "date": "Wed, 02 Sep 2026 20:39:24 GMT",
+    "content-type": "text/html; charset=utf-8",
+    "cache-control": "no-store",
+    "set-cookie": "techaro.lol-anubis-auth=; Path=/; Expires=Wed, 02 Sep 2026 20:38:24 GMT; Max-Age=0; Secure; SameSite=None, techaro.lol-anubis-cookie-verification=01a063d9-0ea8-75bd-82dd-db428c1627fc; Path=/; Expires=Wed, 02 Sep 2026 21:09:24 GMT; Secure; SameSite=None",
+    "server-timing": "miss, 0_TR_client_wait;dur=0, _Tw_queues;dur=0, 2_Tc_bak_connect;dur=1, 3_Tr_bak_response;dur=2, cfCacheStatus;desc=\"DYNAMIC\", cfEdge;dur=5,cfOrigin;dur=171",
+    "cf-cache-status": "DYNAMIC",
+    "vary": "accept-encoding",
+    "speculation-rules": "\"/cdn-cgi/speculation\"",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=WbLIcCySwYmVGoqJSeZuz4YiGEa%2FR2hpLOt%2BYMxesqY0qckc7CqSE2AabOOh07iaEu38dHEj9V3GAQc%2BJ8070qkKWWWZdgaC1x8XWHtiYjarXhwN%2BkCIQr0pGk4k05b6h1%2BEFlb1j2g%3D\"}]}",
+    "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+    "server": "cloudflare",
+    "cf-ray": "a34f52ea192f9b71-SIN",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "cookies_received": {
+    "techaro.lol-anubis-cookie-verification": "01a063d9-0ea8-75bd-82dd-db428c1627fc"
+  },
+  "forms_detected": [],
+  "tables_detected": [],
+  "sample_links": {
+    "subtitles_links": [],
+    "download_links": [],
+    "language_links": []
+  },
+  "raw_html_snippet": "<!doctype html><html lang=\"en\"><head><title>Making sure you&#39;re not a bot!</title><link rel=\"stylesheet\" href=\"/.within.website/x/xess/xess.min.css?cachebuster=1.25.0\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><meta name=\"robots\" content=\"noindex,nofollow\"><style>\n        body,\n        html {\n            height: 100%;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            margin-left: auto;\n            margin-right: auto;\n        }\n\n        .centered-div {\n            text-align: center;\n        }\n\n        #status {\n            font-variant-numeric: tabular-nums;\n        }\n\n        #progress {\n            display: none;\n            width: 90%;\n            width: min(20rem, 90%);\n            height: 2rem;\n            border-radius: 1rem;\n            overflow: hidden;\n            margin: 1rem 0 2rem;\n            outline-offset: 2px;\n            outline: #b16286 solid 4px;\n        }\n\n        .bar-inner {\n            background-color: #b16286;\n            height: 100%;\n            width: 0;\n            transition: width 0.25s ease-in;\n        }\n    \t</style><script id=\"anubis_version\" type=\"application/json\">\"1.25.0\"\n</script><script id=\"anubis_challenge\" type=\"application/json\">{\"rules\":{\"algorithm\":\"fast\",\"difficulty\":4},\"challenge\":{\"issuedAt\":\"2026-09-02T20:39:24.584382615Z\",\"metadata\":{\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0"
+}
