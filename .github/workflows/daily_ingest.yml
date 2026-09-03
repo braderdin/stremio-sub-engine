@@ -1,0 +1,80 @@
+name: Daily Subtitle Pipeline Ingest
+
+on:
+  schedule:
+    # Berjalan setiap hari pada jam 04:00 UTC (12:00 tengah hari waktu Malaysia)
+    - cron: '0 4 * * *'
+  workflow_dispatch: # Membolehkan manual run dari tab Actions GitHub
+
+permissions:
+  contents: write
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Pipeline Ingestion (Safe Batch Limit)
+        env:
+          ADDON_SECRET_TOKEN: ${{ secrets.ADDON_SECRET_TOKEN }}
+          CF_WORKER_URL: ${{ secrets.CF_WORKER_URL }}
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+          UPSTASH_SEARCH_REST_URL: ${{ secrets.UPSTASH_SEARCH_REST_URL }}
+          UPSTASH_SEARCH_REST_TOKEN: ${{ secrets.UPSTASH_SEARCH_REST_TOKEN }}
+          QSTASH_URL: ${{ secrets.QSTASH_URL }}
+          QSTASH_TOKEN: ${{ secrets.QSTASH_TOKEN }}
+          # Akaun B2 1 hingga 5
+          B2_ACC1_KEY_ID: ${{ secrets.B2_ACC1_KEY_ID }}
+          B2_ACC1_APP_KEY: ${{ secrets.B2_ACC1_APP_KEY }}
+          B2_ACC1_BUCKET_NAME: ${{ secrets.B2_ACC1_BUCKET_NAME }}
+          B2_ACC1_BUCKET_ID: ${{ secrets.B2_ACC1_BUCKET_ID }}
+          B2_ACC2_KEY_ID: ${{ secrets.B2_ACC2_KEY_ID }}
+          B2_ACC2_APP_KEY: ${{ secrets.B2_ACC2_APP_KEY }}
+          B2_ACC2_BUCKET_NAME: ${{ secrets.B2_ACC2_BUCKET_NAME }}
+          B2_ACC2_BUCKET_ID: ${{ secrets.B2_ACC2_BUCKET_ID }}
+          B2_ACC3_KEY_ID: ${{ secrets.B2_ACC3_KEY_ID }}
+          B2_ACC3_APP_KEY: ${{ secrets.B2_ACC3_APP_KEY }}
+          B2_ACC3_BUCKET_NAME: ${{ secrets.B2_ACC3_BUCKET_NAME }}
+          B2_ACC3_BUCKET_ID: ${{ secrets.B2_ACC3_BUCKET_ID }}
+          B2_ACC4_KEY_ID: ${{ secrets.B2_ACC4_KEY_ID }}
+          B2_ACC4_APP_KEY: ${{ secrets.B2_ACC4_APP_KEY }}
+          B2_ACC4_BUCKET_NAME: ${{ secrets.B2_ACC4_BUCKET_NAME }}
+          B2_ACC4_BUCKET_ID: ${{ secrets.B2_ACC4_BUCKET_ID }}
+          B2_ACC5_KEY_ID: ${{ secrets.B2_ACC5_KEY_ID }}
+          B2_ACC5_APP_KEY: ${{ secrets.B2_ACC5_APP_KEY }}
+          B2_ACC5_BUCKET_NAME: ${{ secrets.B2_ACC5_BUCKET_NAME }}
+          B2_ACC5_BUCKET_ID: ${{ secrets.B2_ACC5_BUCKET_ID }}
+        run: |
+          # Jalankan pipeline dengan had 1,000 fail sehari agar kekal dalam zon selamat Upstash
+          python3 07_pipeline_runner.py --limit 1000 --delay 0.3
+
+      - name: Commit and Push State, Ledger & Processed Chunks
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Jejak lejar muat naik, rekod bait B2, dan fail pecahan data
+          git add data/*.json data/chunks/
+          
+          # Tolak commit hanya jika terdapat perubahan data
+          if git diff --staged --quiet; then
+            echo "Tiada data baharu untuk di-commit."
+          else
+            git commit -m "chore(ledger): auto-update sync ledger & storage state [skip ci]"
+            git push
+          fi
