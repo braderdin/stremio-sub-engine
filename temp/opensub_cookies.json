@@ -1,0 +1,32 @@
+[
+  {
+    "name": "PHPSESSID",
+    "value": "uPj2pKbUIqGpzKuTEIKS5HaiUia",
+    "domain": ".opensubtitles.org",
+    "path": "/",
+    "expires": 1788456842.785,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "None"
+  },
+  {
+    "name": "download-counter",
+    "value": "1",
+    "domain": "www.opensubtitles.org",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "None"
+  },
+  {
+    "name": "cf_clearance",
+    "value": "cHLk0eE1QQkqPMRxFvSG6pNM_FBmGNcI_U919jZWi20-1788435245-1.2.1.1-BIzDAcJRe4t6G.dKLd76WM7gRvCRPyePSnC1c2RRkrBRkFGsyFZK6_a.ABC0pdri9mUd73Ap1Ci4c3BBNr3w3bNIixKbD2CxvYW4gAmF2JouL4q.GqyNyu.e6D.HfBMw.oZahqvbwRHJwNDo2tTLjovUMUtuIm1cMjsmTIgx82TstHnElE1uhR18yCTYeJcqItV9p7Zcn8WfnbKzrPuEb0RXfyJ7HP0UIwnZ_2IxvmIieH7hBT5LQsCtoJh1MJfRy7KYMWc0ATlQSHqV5Vp5X4lCcFosOQShLKzCuNuEFgZTzxX9hSWWEwjzjZk2MMeVlP1VyalNxbv98k_cXTzIfuaN6kVAUAwwRPHuthvQ9D4",
+    "domain": ".opensubtitles.org",
+    "path": "/",
+    "expires": 1819971245.53,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Strict"
+  }
+]
